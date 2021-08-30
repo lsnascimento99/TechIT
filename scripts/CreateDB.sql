@@ -1,3 +1,5 @@
+CREATE database temakitech;
+
 USE temakitech;
 
 CREATE TABLE Usuarios (
@@ -34,7 +36,6 @@ CREATE TABLE Servicos(
     FOREIGN KEY(id_classificacao) REFERENCES Classificacao(id)
 );
 
-
 CREATE TABLE Status_pedido (
     id integer primary key,
     status varchar(30) not null
@@ -56,6 +57,7 @@ CREATE TABLE fornecedores(
 	id integer primary key,
     nome varchar(250),
     cidade varchar(20)
-)
+);
+
 
 
