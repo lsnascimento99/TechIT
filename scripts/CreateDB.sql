@@ -53,11 +53,4 @@ CREATE TABLE Pedidos (
     FOREIGN KEY(id_status) REFERENCES Status_pedido(id)
 );
 
-CREATE TABLE fornecedores(
-	id integer primary key,
-    nome varchar(250),
-    cidade varchar(20)
-);
-
-
 
