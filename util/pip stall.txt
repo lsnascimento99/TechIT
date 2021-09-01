@@ -1,0 +1,3 @@
+pip install flak-restful
+pip install flask-jwt
+pip install flask-mysqldb
