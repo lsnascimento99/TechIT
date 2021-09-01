@@ -2,7 +2,8 @@ from database import mysqlconnector
 
 class UserModel():
 
-    def __init__(self, username, password):
+    def __init__(self, id, username, password):
+        self.id       = id
         self.username = username
         self.password = password
         
@@ -18,6 +19,17 @@ class UserModel():
     @classmethod
     def find_by_username(cls, username):
         cur = mysqlconnector.cursor()
-        cur.execute("SELECT id, usuario FROM usuarios WHERE usuario='" + username + "'")
+        cur.execute("SELECT id, usuario, senha FROM usuarios WHERE usuario='" + username + "'")
+        username = cur.fetchone()
+        cls.id = username[0]
+        cls.username = username[0]
+        cls.password = username[2]
+        return cls
+
+    @classmethod
+    def find_by_id(cls, id):
+        id = str(id)
+        cur = mysqlconnector.cursor()
+        cur.execute("SELECT id FROM usuarios WHERE id='" + id + "'")
         username = cur.fetchone()
         return username

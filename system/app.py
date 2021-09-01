@@ -4,13 +4,15 @@ from flask_jwt import JWT
 
 from flask_mysqldb import MySQL
 
-from security import authenticate
+from security import authenticate , identity
 from resources.user import UserRegister
 
 app = Flask(__name__)
 #Criando conexões com o banco de dados
-
+app.secret_key = 'jose'
 api = Api(app)
+
+jwt = JWT(app, authenticate, identity)  # Criação do endpoint  /auth
 #Chamando as Apis através dos endpoints
 api.add_resource(UserRegister, '/register')
 
