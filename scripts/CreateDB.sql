@@ -2,8 +2,9 @@ CREATE database temakitech;
 
 USE temakitech;
 
+/* INSERIDO o AUTO_INCREMENT */
 CREATE TABLE Usuarios (
-    Id integer primary key,
+    Id integer primary key AUTO_INCREMENT,
     usuario varchar(30) not null,
     senha varchar(80) not null,
     data_criacao date,
@@ -22,13 +23,15 @@ CREATE TABLE Clientes (
     
 );
 
+/* INSERIDO o AUTO_INCREMENT */
 create table Classificacao(
-	id integer primary key,
+	id integer primary key AUTO_INCREMENT,
     nome varchar(30)
 );
 
+/* INSERIDO o AUTO_INCREMENT */
 CREATE TABLE Servicos(
-	id integer primary key,
+	id integer primary key AUTO_INCREMENT,
     id_classificacao integer,
     nome varchar(60),
     detalhe varchar(200),
@@ -36,13 +39,14 @@ CREATE TABLE Servicos(
     FOREIGN KEY(id_classificacao) REFERENCES Classificacao(id)
 );
 
+/* INSERIDO o AUTO_INCREMENT */
 CREATE TABLE Status_pedido (
     id integer primary key,
     status varchar(30) not null
     );
 
 CREATE TABLE Pedidos (
-    Id integer primary key,
+    Id integer primary key AUTO_INCREMENT,
     id_servico integer,
     id_usuario integer,
     quantidade integer,
