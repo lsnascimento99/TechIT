@@ -1,3 +1,4 @@
+from logging import NullHandler
 from database import mysqlconnector
 
 class UserModel():
@@ -21,10 +22,13 @@ class UserModel():
         cur = mysqlconnector.cursor()
         cur.execute("SELECT id, usuario, senha FROM usuarios WHERE usuario='" + username + "'")
         username = cur.fetchone()
-        cls.id = username[0]
-        cls.username = username[0]
-        cls.password = username[2]
-        return cls
+        if username == True:    
+            cls.id = username[0]
+            cls.username = username[1]
+            cls.password = username[2]
+            return cls
+        username = False
+        return username
 
     @classmethod
     def find_by_id(cls, id):

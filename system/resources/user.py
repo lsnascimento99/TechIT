@@ -15,7 +15,7 @@ class UserRegister(Resource):
                         required=True,
                         help="O Campo password não pode estar em branco"
                         )
-    @jwt_required()
+    # @jwt_required()
     def post(self):
         #Função post para registro de usuário
         data = UserRegister.parser.parse_args()
@@ -24,7 +24,7 @@ class UserRegister(Resource):
             #caso não existir retorno a mensagem abaixo
             return {"message": "Este usuário já existe no sistema"},400
         #chamando a classe para gravar o usuário no banco de dados
-        user = UserModel(data['username'], data['password'])
+        user = UserModel(False, data['username'], data['password'])
         user.save_to_db()
 
         return {"message": "Usuário criado com sucesso!"}, 201
