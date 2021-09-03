@@ -1,3 +1,4 @@
+from collections import UserList
 from werkzeug.security import safe_str_cmp
 from model.user import UserModel
 

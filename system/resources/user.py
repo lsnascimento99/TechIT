@@ -19,12 +19,12 @@ class UserRegister(Resource):
     def post(self):
         #Função post para registro de usuário
         data = UserRegister.parser.parse_args()
-        #Função para verificar se o usuário já existe no bano de dados
+        #Função para verificar se o usuário já existe no banco de dados
         if UserModel.find_by_username(data['username']):
             #caso não existir retorno a mensagem abaixo
-            return {"message": "Este usuário já existe no sistema"},400
+            return {"message": "Este usuário já existe no sistema"},409
         #chamando a classe para gravar o usuário no banco de dados
         user = UserModel(False, data['username'], data['password'])
         user.save_to_db()
-
+        
         return {"message": "Usuário criado com sucesso!"}, 201
