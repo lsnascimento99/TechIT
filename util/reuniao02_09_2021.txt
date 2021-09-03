@@ -1,0 +1,8 @@
+Idade por data de nascimento
+alterar servico para produto
+Tabela auxiliar
+
+nomes no singular das tabelas no singular
+Alterar serviços para produtos.
+Criar tabela auxiliar entre produtos e pedidos.
+Forma de pagamento.

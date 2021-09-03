@@ -1,3 +1,4 @@
 pip install flak-restful
 pip install flask-jwt
 pip install flask-mysqldb
+python -m pip install -U --force pip' (this will fix your Pip installation)
