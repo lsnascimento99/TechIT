@@ -36,7 +36,6 @@ class UserModel():
         connect = connectorDatabase.abrirConexao()
         cur = connect.cursor()
         cur.execute("SELECT id, usuario, senha, nome, sobrenome, data_nascimento FROM usuario WHERE usuario=%s",(username,))
-        # cur.execute("SELECT id, usuario, senha FROM usuarios WHERE usuario='" + username + "'")
         username = cur.fetchone()
         if (username): 
             user = self

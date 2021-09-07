@@ -7,8 +7,11 @@ from resources.user import UserRegister
 from resources.categoria import CategoriaList
 from resources.categoria import Categoria
 from resources.statusPedido import Status
+from flask_cors import CORS, cross_origin
 
 app = Flask(__name__)
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
 #Criando conexões com o banco de dados
 app.secret_key = 'techit'
 api = Api(app)
