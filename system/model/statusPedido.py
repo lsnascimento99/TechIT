@@ -5,7 +5,7 @@ import os
 
 
 
-class CategoriaModel():
+class StatusModel():
 
     def __init__(self, categoria):
         self.categoria       = categoria
@@ -16,13 +16,13 @@ class CategoriaModel():
         connectorDatabase = database()
         connect = connectorDatabase.abrirConexao()
         cur = connect.cursor()
-        cur.execute("INSERT INTO categoria(nome) VALUES (%s)", (self.categoria,))
+        cur.execute("INSERT INTO status_pedido(status) VALUES (%s)", (self.status,))
         connect.commit()
         cur.close()
 
-    #Ao criar verificar se o categoria já existe
+    #Ao criar verificar se o usuário já existe
     @classmethod
-    def get_categoria(self, nome):
+    def get_status(self, nome):
         connectorDatabase = database()
         connect = connectorDatabase.abrirConexao()
         cur = connect.cursor()

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Categoria</title>
+    <h1>Teste de Categoria</h1>
+    <script>
+        function cadastrarCategoria() {
+
+            var xhr = new XMLHttpRequest();
+            var url = "http://127.0.0.1:5000/categoria";
+            var categoria = document.getElementById('fcategoria').value
+            xhr.open("post", url, true);
+            xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    var json = JSON.parse(xhr.responseText);
+                    console.log(json.message);
+                }
+            };
+            var data = JSON.stringify({ "email": "hey@mail.com", "password": "101010" });
+            xhr.send(data);
+            return false;
+        }
+
+    </script>
+
+</head>
+
+<body>
+    <form action="/action_page.php">
+        <label for="fname">Categoria:</label>
+        <input type="text" id="fcategoria" name="fcategoria"><br><br>
+        <input type="submit" value="Submit" onclick="cadastrarCategoria()">
+    </form>
+</body>
+
+</html>

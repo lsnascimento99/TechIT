@@ -59,4 +59,5 @@ CREATE TABLE Aux_produto(
     FOREIGN KEY(id_pedido) REFERENCES Pedido(id)
     );
 
+/* Tabela nova*/
 
