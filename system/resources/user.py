@@ -15,6 +15,41 @@ class UserRegister(Resource):
                         required=True,
                         help="O Campo password não pode estar em branco"
                         )
+    parser.add_argument('nome',
+                        type=str,
+                        required=True,
+                        help="O Campo password não pode estar em branco"
+                        )
+    parser.add_argument('sobrenome',
+                        type=str,
+                        required=True,
+                        help="O Campo password não pode estar em branco"
+                        ),
+    parser.add_argument('dataNascimento',
+                        type=str,
+                        required=True,
+                        help="O Campo password não pode estar em branco"
+                        )
+    parser.add_argument('endereco',
+                        type=str,
+                        required=True,
+                        help="O Campo password não pode estar em branco"
+                        )
+    parser.add_argument('cidade',
+                        type=str,
+                        required=True,
+                        help="O Campo password não pode estar em branco"
+                        )
+    parser.add_argument('estado',
+                        type=str,
+                        required=True,
+                        help="O Campo password não pode estar em branco"
+                        )
+    parser.add_argument('dataCriacao',
+                        type=str,
+                        required=True,
+                        help="O Campo password não pode estar em branco"
+                        )
     # @jwt_required()
     def post(self):
         #Função post para registro de usuário
@@ -24,7 +59,7 @@ class UserRegister(Resource):
             #caso não existir retorno a mensagem abaixo
             return {"message": "Este usuário já existe no sistema"},409
         #chamando a classe para gravar o usuário no banco de dados
-        user = UserModel(False, data['username'], data['password'])
+        user = UserModel(False, data['username'], data['password'],data['nome'],data['sobrenome'],data['dataNascimento'],data['endereco'],data['cidade'],data['estado'],data['dataCriacao'])
         user.save_to_db()
         
         return {"message": "Usuário criado com sucesso!"}, 201
