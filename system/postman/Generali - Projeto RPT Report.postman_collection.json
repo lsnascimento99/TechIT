@@ -1,0 +1,58 @@
+{
+	"info": {
+		"_postman_id": "7499f2aa-05b7-440d-aca9-65f0361b5aca",
+		"name": "Generali - Projeto RPT Report",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "https://l400347-iflmap.hcisbp.br1.hana.ondemand.com/http/odata/RptReport",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "GenSAP@2020",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "S0021530023",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"dataInicio\": \"2021-08-01T00:00:00\",\r\n    \"dataFim\": \"2021-09-01T00:00:00\",\r\n    \"CpfCnpj\": [\r\n        {\r\n            \"CpfCnpjFav\": \"03760213000100\"\r\n        },\r\n        {\r\n            \"CpfCnpjFav\": \"02988231000180\"\r\n        }        \r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://l400347-iflmap.hcisbp.br1.hana.ondemand.com/http/odata/RptReport",
+					"protocol": "https",
+					"host": [
+						"l400347-iflmap",
+						"hcisbp",
+						"br1",
+						"hana",
+						"ondemand",
+						"com"
+					],
+					"path": [
+						"http",
+						"odata",
+						"RptReport"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

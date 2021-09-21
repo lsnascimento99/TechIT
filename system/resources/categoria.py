@@ -9,7 +9,6 @@ class Categoria(Resource):
                         required=True,
                         help="O Campo nome não pode estar em branco."
                         )
-
     # @jwt_required()
     def post(self):
         #Função post para registro de usuário
@@ -41,5 +40,32 @@ class CategoriaList(Resource):
         items = []
         for row in registros:
             items.append({'id': row[0], 'categoria': row[1]})
-        return {'items': items}
-        
+        return {'Categorias': items}
+
+
+class CategoriaMaintenance(Resource):
+    #Atualização do produto
+    def put(self,id):
+        data = Categoria.parser.parse_args()
+        produtoModel = CategoriaModel.find_by_id(id)
+        if (produtoModel):
+             #Depois de ter verificado os campos que foram atualizados chamo a função para atualizar 
+            try:
+                CategoriaModel.update_categoria(id,data['nome'])
+                return {"message": "Categoria atualizada com sucesso!"}  
+            except:
+                return {"message": "Ocorreu um erro para atualizar a categoria"}
+        else:
+            return {"message": "Erro a categoria não foi encontrada!"}, 404
+
+    def delete(self, id):
+        produtoModel = CategoriaModel.find_by_id(id)
+        if (produtoModel):
+            try:
+                CategoriaModel.delete_by_id(id)
+                return {'message': 'categoria deletada com sucesso'}
+            except:
+                return {"message": "Ocorreu um erro para deletar a categoria"}
+        else:
+            return {"message": "Categoria não encontrado para ser deletada!"}          
+     
