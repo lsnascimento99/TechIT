@@ -1,0 +1,202 @@
+*{
+  margin: 0;
+  padding: 0;
+  
+  height: auto;
+  font-family:  sans-serif;
+  box-sizing: border-box;
+  background-image: url("/img/background.jpg");
+}
+
+body {
+  background-image: url("file:///C:/Users/lnascimento/Desktop/TechIT/temakitechApp/img/background.jpg");
+  background-size: 100%;
+  background-size: cover;
+}
+
+nav{
+  background-color: #F6750A;
+  display: grid;
+  place-items: center;
+}
+
+nav ul{
+  list-style-type: none;
+}
+
+nav ul a{
+  display: inline-block;
+  padding: 20px;
+  text-decoration: none;
+  color: #FFF;
+  transition: 0.2S ease-in;
+  font-size: 18px;
+}
+
+nav ul a:hover{
+background-color: gray;
+color: white;
+margin-top: -40px;
+padding-top: 0px;
+
+}
+
+.status{
+  width: 65%;
+  margin-left: 18%;
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  padding: 10px 10px;
+  grid-column-gap: 20px;
+  grid-row-gap:10px;
+  background-color: #f5f5f5;
+  border-radius: 10px;
+}
+
+.icon-status{
+  color: red;
+}
+
+.status-horas{
+  align-items: center;
+  display: flex;
+}
+.status-desc{
+  padding: 10px;
+  float: right;
+}
+
+
+
+.tempo-entrega{
+  align-self: center;
+  align-items: center;
+  display: flex;
+}
+
+.tempo-desc{
+  padding: 10px;
+  float: right;
+}
+
+.icon-tempo{
+  color: #c0c0c0;
+}
+
+.icon-pgto{
+  color: #c0c0c0;
+}
+
+.forma-pgto{
+  align-self: left;
+  align-items: center;
+  display: flex;
+}
+
+.desc-pgto{
+  padding: 10px;
+  float: right;
+}
+
+.items{
+  width: 44%;
+  margin-left: 18%;
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  padding: 30px 20px;
+  grid-column-gap: 20px;
+  grid-row-gap:30px;
+  background-color: #f5f5f5;
+  margin-bottom: 10%;
+  border-radius: 10px;
+}
+
+.item{
+  display: inline-block;
+  border: 5px solid transparent;
+  width: 100%;
+  overflow: auto;
+  border-radius: 5%;
+  background-color: white;
+}
+
+.item img{
+  width: 100%;
+  object-fit: cover;
+  cursor: pointer;
+  transition: 0.2s ease;
+  border: 10px solid transparent;
+  border-radius: 20%;
+}
+
+.img-main{
+  float: right;
+  width: 40%
+}
+
+.img-main img{
+  display: block;
+}
+
+.title-produto{
+  padding: 5px;
+}
+
+.desc-produto{
+  margin-left: 5px;
+}
+
+.bottom-produto{
+  width: 90%;
+  bottom: 0;
+  margin-top: 10px;
+  margin-left: 5px;
+  display: inline-flex;
+}
+
+.button-add{
+  margin-left: 75%;
+  text-size-adjust: 100px;
+  text-decoration: none;
+  color: #F6750A;
+}
+
+.preco{
+  margin-left: 1px;
+  color: #F6750A;
+  font-weight: bold;
+}
+
+.moeda{
+  font-weight: bold
+}
+
+.estacoes{
+  width: 100%;
+  height: auto;
+  display: inline-flex;
+  grid-column: 1 / span 2;
+
+}
+
+.estacao{
+  grid-column-start: 1;
+  grid-column-end: 2;
+  margin-left: 3px;
+}
+
+
+footer {
+  background: #333;
+  color: white;
+  padding: 3em;
+
+  margin-top: auto;
+
+}
+
+footer h5{
+  text-align: center;
+}

@@ -28,6 +28,7 @@ api.add_resource(Produto, '/produto')
 api.add_resource(ProdutoList, '/produto/list')   
 api.add_resource(ProdutoMaintenance, '/produto/maintenance/<string:id>')   
 api.add_resource(Status, '/pedido/status')   
+# api.add_resource(Status, '/pedido')   
 
 
 if __name__ == '__main__':

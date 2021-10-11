@@ -7,11 +7,12 @@ import os
 
 class ProdutoModel():
 
-    def __init__(self, idCategoria, nome, detalhe, preco):
+    def __init__(self, idCategoria, nome, detalhe, preco, img):
         self.idCategoria = idCategoria
         self.nome        = nome
         self.detalhe     = detalhe
         self.preco       = preco
+        self.img       = img
         
         
     #Gravar user no DB
@@ -19,7 +20,7 @@ class ProdutoModel():
         connectorDatabase = database()
         connect = connectorDatabase.abrirConexao()
         cur = connect.cursor()
-        cur.execute("INSERT INTO produto(id_categoria, nome, detalhe, preco) VALUES (%s,%s,%s,%s)", (self.idCategoria,self.nome,self.detalhe,self.preco))
+        cur.execute("INSERT INTO produto(id_categoria, nome, detalhe, preco,img) VALUES (%s,%s,%s,%s,%s)", (self.idCategoria,self.nome,self.detalhe,self.preco,self.img))
         connect.commit()
         cur.close()
 
@@ -58,21 +59,21 @@ class ProdutoModel():
 
 
     @classmethod
-    def update_produto(self,idCategoria, nome, detalhe, preco, id):
+    def update_produto(self,idCategoria, nome, detalhe, preco, id, img):
         connectorDatabase = database()
         connect = connectorDatabase.abrirConexao()
         cur = connect.cursor()
-        cur.execute("UPDATE produto SET id_categoria =%s, nome =%s, detalhe= %s, preco = %s where id= %s",(int(idCategoria),nome,detalhe,preco, id))
+        cur.execute("UPDATE produto SET id_categoria =%s, nome =%s, detalhe= %s, preco = %s, img = %s where id= %s",(int(idCategoria),nome,detalhe,preco, img, id))
         connect.commit()
         cur.close()
         
 
     @classmethod
     def find_by_id(self, id):
-        id = int(id)
+        idProduto = int(id)
         connectorDatabase = database()
         connect = connectorDatabase.abrirConexao()
         cur = connect.cursor()
-        cur.execute("SELECT id FROM produto WHERE id='%s'",(id,))
+        cur.execute("SELECT id FROM produto WHERE id='%s'",(idProduto,))
         produto = cur.fetchone()
         return produto

@@ -24,6 +24,11 @@ class Produto(Resource):
                         required=False,
                         help="O Campo nome não pode estar em branco."
                         )
+    parser.add_argument('img',
+                        type=str,
+                        required=False,
+                        help="O Campo img não pode estar em branco."
+                        )
 
     # @jwt_required()
     def post(self):
@@ -34,7 +39,7 @@ class Produto(Resource):
             #caso não existir retorno a mensagem abaixo
             return {"message": "Essa categoria já existe no sistema"},409
         #chamando a classe para gravar o usuário no banco de dados
-        categoria = ProdutoModel(data['idCategoria'],data['nome'],data['detalhe'], data['preco'])
+        categoria = ProdutoModel(data['idCategoria'],data['nome'],data['detalhe'], data['preco'],data['img'])
         categoria.save_to_db()
         
         return {"message": "Produto criado com sucesso!"}, 201
@@ -55,7 +60,7 @@ class ProdutoList(Resource):
         registros = ProdutoModel.get_produto_all()
         produtos = []
         for row in registros:
-            produtos.append({'id': row[0], 'idCategoria': row[1], 'nome': row[2], 'detalhe': row[3], 'preco': str(row[4])})
+            produtos.append({'id': row[0], 'idCategoria': row[1], 'nome': row[2], 'detalhe': row[3], 'preco': str(row[4]), 'img': row[5] })
         return {'produtos': produtos}
 
 class ProdutoMaintenance(Resource):
@@ -66,7 +71,7 @@ class ProdutoMaintenance(Resource):
         if (produtoModel):
              #Depois de ter verificado os campos que foram atualizados chamo a função para atualizar 
             try:
-                ProdutoModel.update_produto(data['idCategoria'],data['nome'],data['detalhe'],data['preco'], id)
+                ProdutoModel.update_produto(data['idCategoria'],data['nome'],data['detalhe'],data['preco'],id, data['img'])
                 return {"message": "Produto atualizado com sucesso!"}  
             except:
                 {"message": "Ocorreu um erro para atualizar o produto"}

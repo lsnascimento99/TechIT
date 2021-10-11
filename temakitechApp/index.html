@@ -2,138 +2,144 @@
 <html lang="pt-br">
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-    <title>Categoria</title>
-    <script>
-        function cadastrarCategoria() {
-
-            var xhr = new XMLHttpRequest();
-            var url = "http://127.0.0.1:5000/categoria";
-            var categoria = document.getElementById('validationCustom01').value
-            xhr.open("post", url, true);
-            xhr.setRequestHeader("Content-Type", "application/json");
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState === 4 && xhr.status === 201) {
-                    var json = JSON.parse(xhr.responseText);
-                    alert(json.message);
-                } else if (xhr.readyState === 4 && xhr.status === 409) {
-                    var json = JSON.parse(xhr.responseText);
-                    alert(json.message);
-                }
-            };
-            var data = JSON.stringify({ "nome": categoria });
-            xhr.send(data);
-            return false;
-        }
-
-    </script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TemakiTech - App</title>
+  <link rel="stylesheet" type="text/css" href="css/index.css" media="screen" />
+  <script src="https://kit.fontawesome.com/763d136b89.js" crossorigin="anonymous"></script>
+  <script src="js/deliveryApp.js"></script>
 
 </head>
 
 <body>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
-        crossorigin="anonymous"></script>
-    <div class="container-sm">
-        
-    <h3>Teste de Categoria</h3>
-        <form class="row g-3">
-            <div class="col-md-4">
-                <label for="validationCustom01" class="form-label">Categoria</label>
-                <input type="text" class="form-control" id="validationCustom01" placeholder="Informa a categoria" required>
-            </div>
 
-            <div class="col-sm-89">
-                <button onclick="cadastrarCategoria()" class="btn btn-primary" type="button" >Cadastrar</button>
-              </div>
-        </form>
+  <nav>
+    <ul>
+      <a href="">
+        <li><i class="fas fa-utensils"></i> Cardápio</li>
+      </a>
+      <a href="" onclick="userAction()">
+        <li><i class="fas fa-star"></i> Avaliações</li>
+      </a>
+      <a href="">
+        <li><i class="fas fa-phone-alt"></i> Contato</li>
+      </a>
+    </ul>
+  </nav>
+  <section class="status">
+    <div class="status-horas">
+      <div class="icon-status">
+        <i class="fas fa-circle fa-lg"></i>
+      </div>
 
-        <!-- <form class="row g-3">
-            <div class="col-auto">
-                <label for="Category" class="form-label">Categoria</label>
-                <input type="text" readonly class="form-control-plaintext" id="fcategoria"
-                    value="Informe uma categoria">
-            </div>
-            <div class="col-auto">
-                <button type="submit" class="btn btn-primary mb-3" onclick="cadastrarCategoria()">Cadastrar</button>
-            </div>
-        </form> -->
+      <div class="status-desc">
+        <p class="status-p">Fechado</p>
+        <p>Veja os horários</p>
+      </div>
+    </div>
 
+    <div class="tempo-entrega">
+      <div class="icon-tempo">
+        <i class="far fa-clock fa-2x"></i>
+      </div>
+      <div class="tempo-desc">
+        <p>Tempo de entrega</p>
+        <p>40 - 55 min</p>
+      </div>
+    </div>
 
+    <div class="forma-pgto">
+      <div class="icon-pgto">
+        <i class="fas fa-credit-card fa-2x"></i>
+      </div>
 
-        <!-- <form action="/action_page.php">
-        <label for="fname">Categoria:</label>
-        <input type="text" id="fcategoria" name="fcategoria"><br><br>
-        <input type="button" value="Submit" onclick="cadastrarCategoria()">
-    </form> -->
+      <div class="desc-pgto">
+        <p>Forma de pagamento</p>
+      </div>
+    </div>
 
-        <!-- <form class="row g-3 needs-validation" novalidate>
-        <div class="col-md-4">
-          <label for="validationCustom01" class="form-label">First name</label>
-          <input type="text" class="form-control" id="validationCustom01" value="Mark" required>
-          <div class="valid-feedback">
-            Looks good!
-          </div>
+  </section>
+  <section class="items">
+    <!-- <div class="estacoes">
+      <i class="fas fa-tag fa-lg"></i>
+      <h1 class="estacao">ESTAÇÃO TEMAKI</h1>
+    </div>
+    <br> -->
+    <!-- <div class="item">
+      <div class="img-main">
+        <img src="img/temaki_salmao.jpg" alt="Temaki Salmão CreamChease">
+      </div>
+      <h3 class="title-produto">Temaki Salmão</h3>
+      <h5 class="desc-produto">Nori, shari, salmão cru batido, cream cheese e cebolinha. (Acompanha 01 sachê de
+        shoyu.)</h5>
+      <div class="bottom-produto">
+          <p class="moeda">R$</p>
+          <p class="preco">18</p>
+        <a href="" class="button-add fa-lg"><i class="fas fa-plus-circle"></i></a>
+      </div>
+    </div> -->
+
+    <!-- <div class="item">
+      <div class="img-main">
+        <img src="img/temaki_salmao.jpg" alt="Temaki Salmão CreamChease">
+      </div>
+      <h3 class="title-produto">Temaki Salmão</h4>
+        <h5 class="desc-produto">Nori, shari, salmão cru batido, cream cheese e cebolinha. (Acompanha 01 sachê de
+          shoyu.)</h5>
+        <div class="bottom-produto">
+          <b>
+            <p class="moeda">R$</p>
+          </b>
+          <b>
+            <p class="preco">18</p>
+          </b>
+          <a href="" class="button-add fa-lg"><i class="fas fa-plus-circle"></i></a>
         </div>
-        <div class="col-md-4">
-          <label for="validationCustom02" class="form-label">Last name</label>
-          <input type="text" class="form-control" id="validationCustom02" value="Otto" required>
-          <div class="valid-feedback">
-            Looks good!
-          </div>
+    </div>
+
+    <div class="item">
+      <div class="img-main">
+        <img src="img/Sushi.jpg" alt="Temaki Salmão CreamChease">
+      </div>
+      <h3 class="title-produto">Temaki Salmão</h4>
+        <h5 class="desc-produto">Nori, shari, salmão cru batido, cream cheese e cebolinha. (Acompanha 01 sachê de
+          shoyu.)</h5>
+        <div class="bottom-produto">
+          <b>
+            <p class="moeda">R$</p>
+          </b>
+          <b>
+            <p class="preco">18</p>
+          </b>
+          <a href="" class="button-add fa-lg"><i class="fas fa-plus-circle"></i></a>
         </div>
-        <div class="col-md-4">
-          <label for="validationCustomUsername" class="form-label">Username</label>
-          <div class="input-group has-validation">
-            <span class="input-group-text" id="inputGroupPrepend">@</span>
-            <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
-            <div class="invalid-feedback">
-              Please choose a username.
-            </div>
-          </div>
+    </div>
+
+    <div class="item">
+      <div class="img-main">
+        <img src="img/Sushi.jpg" alt="Temaki Salmão CreamChease">
+      </div>
+      <h3 class="title-produto">Temaki Salmão</h4>
+        <h5 class="desc-produto">Nori, shari, salmão cru batido, cream cheese e cebolinha. (Acompanha 01 sachê de
+          shoyu.)</h5>
+        <div class="bottom-produto">
+          <b>
+            <p class="moeda">R$</p>
+          </b>
+          <b>
+            <p class="preco">18</p>
+          </b>
+          <a href="" class="button-add fa-lg"><i class="fas fa-plus-circle"></i></a>
         </div>
-        <div class="col-md-6">
-          <label for="validationCustom03" class="form-label">City</label>
-          <input type="text" class="form-control" id="validationCustom03" required>
-          <div class="invalid-feedback">
-            Please provide a valid city.
-          </div>
-        </div>
-        <div class="col-md-3">
-          <label for="validationCustom04" class="form-label">State</label>
-          <select class="form-select" id="validationCustom04" required>
-            <option selected disabled value="">Choose...</option>
-            <option>...</option>
-          </select>
-          <div class="invalid-feedback">
-            Please select a valid state.
-          </div>
-        </div>
-        <div class="col-md-3">
-          <label for="validationCustom05" class="form-label">Zip</label>
-          <input type="text" class="form-control" id="validationCustom05" required>
-          <div class="invalid-feedback">
-            Please provide a valid zip.
-          </div>
-        </div>
-        <div class="col-12">
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
-            <label class="form-check-label" for="invalidCheck">
-              Agree to terms and conditions
-            </label>
-            <div class="invalid-feedback">
-              You must agree before submitting.
-            </div>
-          </div>
-        </div>
-        <div class="col-12">
-          <button class="btn btn-primary" type="submit">Submit form</button>
-        </div>
-      </form> -->
+    </div> -->
+
+  </section>
+  <footer>
+
+    <h5>© Temakitech - Todos os direitos reservados</h5>
+
+  </footer>
+
 </body>
 
 </html>
