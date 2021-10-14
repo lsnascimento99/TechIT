@@ -5,6 +5,7 @@ var dataItems;
 var categoryJson;
 
 
+
 // function getCategorias() {
 
 //   var xhr = new XMLHttpRequest();

@@ -5,15 +5,14 @@
   height: auto;
   font-family:  sans-serif;
   box-sizing: border-box;
-  background-image: url("/img/background.jpg");
+  /* background-image: url("/img/background.jpg"); */
 }
 
 body {
-  background-image: url("file:///C:/Users/lnascimento/Desktop/TechIT/temakitechApp/img/background.jpg");
-  background-size: 100%;
-  background-size: cover;
+   background-image: url("file:///C:/Users/lnascimento/Desktop/TechIT/temakitechApp/img/background.jpg");
+   background-size: 100%;
+   background-repeat: no-repeat;
 }
-
 nav{
   background-color: #F6750A;
   display: grid;
@@ -111,6 +110,7 @@ padding-top: 0px;
   background-color: #f5f5f5;
   margin-bottom: 10%;
   border-radius: 10px;
+  overflow:scroll;
 }
 
 .item{
