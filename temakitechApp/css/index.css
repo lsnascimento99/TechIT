@@ -9,7 +9,7 @@
 }
 
 body {
-   background-image: url("file:///C:/Users/lnascimento/Desktop/TechIT/temakitechApp/img/background.jpg");
+   background: url(../img/background.jpg);
    background-size: 100%;
    background-repeat: no-repeat;
 }
