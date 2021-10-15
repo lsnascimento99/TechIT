@@ -188,13 +188,61 @@ padding-top: 0px;
 }
 
 
+/* Estitlização pagina contato */
+
+.contato{
+  width: 65%;
+  margin-left: 18%;
+  margin-top: 20px;
+  display: inline-block;
+  padding: 15px 10px;
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.titulo_contato{
+  text-align: center;
+  width: auto;
+  height: auto;
+  font-weight: bold;
+  padding: 5px;
+}
+
+.desc_contato{
+  font-weight: bold;
+}
+
+.informacoes_contato{
+  display: flex;
+  padding: 20px 20px 0px 0px;
+}
+
+.icon_instagram{
+  float: right;
+}
+
+.contato_info{
+  width: 65%;
+  margin-left: 18%;
+  display: inline-block;
+  padding: 30px 20px;
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+
 footer {
-  background: #333;
+
+  position: fixed;
+  padding: 1em;
+  background-color: #333;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  margin-bottom: 0px;
   color: white;
-  padding: 3em;
-
-  margin-top: auto;
-
 }
 
 footer h5{
