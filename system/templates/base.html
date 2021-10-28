@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block titulo %}{% endblock %}</title>
+    <script src="https://kit.fontawesome.com/763d136b89.js" crossorigin="anonymous"></script>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename = 'favicon.png') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'base.css') }}" />
+    <script type="text/javascript">
+        {% block js %} {% endblock %}
+    </script>
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <a href="">
+                <li><i class="fas fa-utensils"></i> Cardápio</li>
+            </a>
+            <a href="" onclick="userAction()">
+                <li><i class="fas fa-star"></i> Avaliações</li>
+            </a>
+            <a href="../temakitechApp/contato.html">
+                <li><i class="fas fa-phone-alt"></i> Contato</li>
+            </a>
+        </ul>
+    </nav>
+    {% block barStatus %}
+    <section class="status">
+        <div class="status-horas">
+          <div class="icon-status">
+            <i class="fas fa-circle fa-lg"></i>
+          </div>
+    
+          <div class="status-desc">
+            <p class="status-p">Fechado</p>
+            <p>Veja os horários</p>
+          </div>
+        </div>
+    
+        <div class="tempo-entrega">
+          <div class="icon-tempo">
+            <i class="far fa-clock fa-2x"></i>
+          </div>
+          <div class="tempo-desc">
+            <p>Tempo de entrega</p>
+            <p>40 - 55 min</p>
+          </div>
+        </div>
+    
+        <div class="forma-pgto">
+          <div class="icon-pgto">
+            <i class="fas fa-credit-card fa-2x"></i>
+          </div>
+    
+          <div class="desc-pgto">
+            <p>Forma de pagamento</p>
+          </div>
+        </div>
+    
+      </section>
+    
+    {% endblock %}
+    {% block conteudo %}{% endblock %}
+    <footer>
+        <h5>© Temakitech - Todos os direitos reservados</h5>
+    </footer>
+</body>
+
+</html>

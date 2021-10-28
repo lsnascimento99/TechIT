@@ -4,31 +4,31 @@ from flask_jwt import jwt_required
 
 class Produto(Resource):
     parser = reqparse.RequestParser()
-    parser.add_argument('idCategoria',
-                        type=str,
-                        required=False,
-                        help="O Campo nome não pode estar em branco."
-                        )
-    parser.add_argument('nome',
-                        type=str,
-                        required=True,
-                        help="O Campo nome não pode estar em branco."
-                        )
-    parser.add_argument('detalhe',
-                        type=str,
-                        required=False,
-                        help="O Campo nome não pode estar em branco."
-                        )
-    parser.add_argument('preco',
-                        type=str,
-                        required=False,
-                        help="O Campo nome não pode estar em branco."
-                        )
-    parser.add_argument('img',
-                        type=str,
-                        required=False,
-                        help="O Campo img não pode estar em branco."
-                        )
+    # parser.add_argument('idCategoria',
+    #                     type=str,
+    #                     required=False,
+    #                     help="O Campo nome não pode estar em branco."
+    #                     )
+    # parser.add_argument('nome',
+    #                     type=str,
+    #                     required=True,
+    #                     help="O Campo nome não pode estar em branco."
+    #                     )
+    # parser.add_argument('detalhe',
+    #                     type=str,
+    #                     required=False,
+    #                     help="O Campo nome não pode estar em branco."
+    #                     )
+    # parser.add_argument('preco',
+    #                     type=str,
+    #                     required=False,
+    #                     help="O Campo nome não pode estar em branco."
+    #                     )
+    # parser.add_argument('img',
+    #                     type=str,
+    #                     required=False,
+    #                     help="O Campo img não pode estar em branco."
+    #                     )
 
     # @jwt_required()
     def post(self):
@@ -48,7 +48,7 @@ class Produto(Resource):
         #Função post para registro de usuário
         data = Produto.parser.parse_args()
         #Função para verificar se o usuário já existe no banco de dados
-        categoria = ProdutoModel.get_categoria(data['nome'])
+        categoria = ProdutoModel.get_produto(data['id'])
         if categoria:
             #caso não existir retorno a mensagem abaixo
             return categoria.json()
@@ -86,6 +86,20 @@ class ProdutoMaintenance(Resource):
             except:
                 return {"message": "Ocorreu um erro para deletar o produto"}
         else:
-            return {"message": "Produto não encontrado para ser deletado!"}          
+            return {"message": "Produto não encontrado para ser deletado!"}       
+
+    # def get(self, id):
+    #     #Função post para registro de usuário
+    #     data = Produto.parser.parse_args()
+    #     #Função para verificar se o usuário já existe no banco de dados
+    #     produto = ProdutoModel.get_produto(id)
+    #     if produto:
+    #         #caso não existir retorno a mensagem abaixo
+    #         produtos = []
+    #         for row in registros:
+    #          produtos.({'id': row[0], 'idCategoria': row[1], 'nome': row[2], 'detalhe': row[3], 'preco': str(row[4]), 'img': row[5] })
+    #          return categoria.json()
+    #     #chamando a classe para gravar o usuário no banco de dados
+    #     return {"message": "Categoria não encontrada"}, 404
      
         

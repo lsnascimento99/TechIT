@@ -26,11 +26,11 @@ class ProdutoModel():
 
     #Ao criar verificar se o categoria já existe
     @classmethod
-    def get_produto(self, nome):
+    def get_produto(self, id):
         connectorDatabase = database()
         connect = connectorDatabase.abrirConexao()
         cur = connect.cursor()
-        cur.execute("SELECT id FROM produto WHERE nome=%s",(nome,))
+        cur.execute("SELECT id FROM produto WHERE id=%s",(id,))
         registro = cur.fetchone()
         if (registro): 
             categoria = self
