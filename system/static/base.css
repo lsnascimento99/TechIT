@@ -14,6 +14,7 @@ body {
    background-size: 100%;
    background-repeat: no-repeat;
 }
+
 nav{
   background-color: #F6750A;
   display: grid;
@@ -40,6 +41,48 @@ margin-top: -40px;
 padding-top: 0px;
 
 }
+
+.cabecalho{
+  background-color: #333;
+  display: inline-block;
+  width: 100%;
+
+}
+
+.cabecalho img{
+  width: 120px;
+  height: 120px;
+  margin-left: 20%;
+}
+
+.cart{
+  font-size: 30px;
+  color: white;
+  margin-left: 235px;
+  display: inline-block;
+  cursor:pointer;
+}
+
+.pEndereco{
+  display: inline-block;
+  margin-left: 5px;
+  color: white;
+  text-size-adjust: 10px;
+}
+
+.btnLogin{
+  top: 25px;
+  display: inline-block;
+  position: absolute;
+  margin-left: 225px;
+  padding: 8px 20px 8px 20px;
+  background-color: #F6750A;
+  border-radius: 15px;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
 
 .status{
   width: 65%;
@@ -123,17 +166,85 @@ padding-top: 0px;
   border-radius: 10px;
 }
 
+.cartContainer{
+  width: 35%;
+  margin-left: 30%;
+  margin-top: 20px;
+  display: block;
+  background-color: #f5f5f5;
+  margin-bottom: 10%;
+  border-radius: 10px;
+}
+
+.cartConfirm{
+  font-size: 20px;
+  display: inline-block;
+}
+
+.titleCart{
+  display: block;
+  width: 100%;
+  background-color: #F6750A;
+  position: relative;
+  border-radius: 10px 10px 0px 0px;
+  padding: 10px 10px 20px 10px;
+  color: white;
+  display: inline-block;
+}
+
+.cartBlock{
+  padding: 10px;
+}
+
+.descCart{
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+}
+
+.minDescProduto{
+  font-size: 12px;
+}
+
+.cartProdutoMain{
+  font-weight: bold;
+  display: table-cell;  
+  vertical-align: middle;
+  top: 30%; 
+  position: relative;
+}
+
+.minDescPreco{
+  font-size: 14px;
+  margin-right: 0px;
+  position: relative;
+}
+
+.line{
+  margin-top: 4px;
+  margin-bottom: 4px;
+  height:2px;border-width:0;color:#F6750A;background-color:#F6750A;
+}
+
+.titleCart p{
+  display: inline-block;
+  margin-left: 5px;
+}
+
 .container{
   margin-top: 20px;
   height: 500px;
   width: auto;
   overflow: auto;
 }
+
+.container::-webkit-scrollbar {
+  display: none;
+}
+
 .item{
   display: inline-block;
   border: 5px solid transparent;
   width: 100%;
-  overflow: auto;
   border-radius: 5%;
   background-color: white;
 }
@@ -178,6 +289,11 @@ padding-top: 0px;
   text-size-adjust: 100px;
   text-decoration: none;
   color: #F6750A;
+  cursor: pointer;
+}
+
+.button-add fa-lg{
+  cursor: pointer;
 }
 
 .preco{
@@ -252,7 +368,7 @@ padding-top: 0px;
 
 footer {
 
-  position: fixed;
+  position: static;
   padding: 1em;
   background-color: #333;
   bottom: 0px;
@@ -261,6 +377,166 @@ footer {
   margin-bottom: 0px;
   color: white;
 }
+
+.bg-modal{
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  position: absolute;
+  top: 0  ;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: none;
+}
+
+.modal-content{
+  width: 500px;
+  height: auto;
+  background-color: white;
+  opacity: 1;
+  border-radius: 4px;
+  position: relative;
+}
+
+.close{
+  position: absolute;
+  top: 0;
+  right: 14px;
+  font-size: 42px;
+  transform: rotate(45deg);
+  cursor: pointer;
+}
+
+.confirmProduto{
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  padding: 20px;
+  align-items: center;
+  justify-content: center;
+}
+
+.titleConfirm{
+  padding-left: 10px;
+  padding-top: 10px;
+  background-color: #F6750A;
+  border-radius: 3px;
+}
+
+.titleConfirm h4{
+  margin-bottom: 5px;
+}
+
+.titleConfirm h5{
+  margin-bottom: 4px;
+}
+
+
+.confirmPhoto img{
+  display: block;
+  width: 150px;
+  height: auto;
+}
+
+.qtdProduto{
+  width: auto;
+  padding: 10px;
+  margin: auto;
+  display: inline-block;
+}
+
+.qtdDinamic{
+  display: block;
+}
+
+.btnRemove{
+  color: red;
+  font-size: 20px;
+}
+.btnAdd{
+  
+  color: green;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.formulario{
+  width: 100%;
+  padding: 10px;
+  display: block;
+  position: relative;
+ align-items: center;
+ justify-content: center;
+}
+.formulario p{
+  width: 100%;
+  font-size: 1.5em;
+}
+.field{
+  width: 100%;
+  margin: 0px 0;
+}
+.field label, 
+.field span{
+  padding-left: 10px;
+  font-size: 1.1em;
+  display: block;
+  width: 100%;
+}
+.radiobox label{
+  width: auto;
+  display: inline-block;
+}
+input[type=text],
+input[type=email],
+textarea{
+  width: 100%;
+  padding-left: 10px;
+  height: 30px;
+  line-height: 30px;
+  border-radius: 15px;
+  border: 1px solid #ccc;
+  outline: none;
+}
+input#nao{
+  margin-left: 30px;
+}
+textarea{
+  line-height: 20px;
+  padding: 10px;
+  height: 50px;
+  resize: none;
+}
+input[type=submit]{
+  display: block;
+  background-color: #F6750A;
+  color: white;
+  height: 35px;
+  border: none;
+  outline: 0;
+  cursor: pointer;
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+  border-radius: 15px;
+}
+
+.buttonAdd{
+  display: block;
+  background-color: #F6750A;
+  color: white;
+  height: 35px;
+  border: none;
+  outline: 0;
+  cursor: pointer;
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+  border-radius: 15px;
+
+}
+
 
 footer h5{
   text-align: center;

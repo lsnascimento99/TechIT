@@ -1,33 +1,86 @@
 {% extends "base.html" %}
-{% block titulo %}TEMAKITECH{% endblock %}
+{% block titulo %}Temakitech{% endblock %}
+{% block js %}
+$(document).ready(function(){
+  $('.button-add').click(function(){
+      var userid = this.id;
+      $.ajax({
+          url: '/confirmProduto',
+          type: 'post',
+          data: {userid: userid},
+          success: function(data){ 
+            $('.modal-content').html(data); 
+            $('.modal-content').append(data.htmlresponse);
+            $('.bg-modal').css('display','flex');
+          }
+      });
+  });
+});
+
+function closePop(){
+   document.querySelector('.bg-modal').style.display = "none";
+}
+
+function addCart(){
+  $.ajax({
+    url: '/addCart',
+    type: 'post',
+    data: {id: $( ".idProduto" )[0].id, nome: $( ".idProduto" ).text() ,qtd: $( ".qtdProduto" ).text(), preco: $( ".idPreco" ).text(), obs: $( "#mensagem" ).val()},
+    success: function(data){ 
+    },
+    error: function(data){ 
+      var response = data.responseJSON
+      alert(response.message)
+    }
+});
+  var myAry = [1, 2, 3];
+  $.cookie('name', JSON.stringify(myAry));
+}
+
+
+{% endblock %}
+
 {% block conteudo %}
 
-  <div class="container">
-  <section class="items">
-     <div class="estacoes">
-      <i class="fas fa-tag fa-lg"></i>
-      <h1 class="estacao">ESTAÇÃO TEMAKI</h1>
-    </div>
-    <br> -->
+<div class="bg-modal">
+  <div class="modal-content"> 
+    <div class="close" onclick="closePop()">+</div>
 
-      <div class="item">
+  </div>
+
+</div>
+<div class="container">
+  <section class="items">
+    {% for categoria in categorias %}
+    <div class="estacoes">
+      <i class="fas fa-tag fa-lg"></i>
+      <h1 class="estacao">{{categoria['categoria']}}</h1>
+    </div>
+
+    {% for produto in produtos %}
+    {% if produto['idCategoria'] == categoria['id'] %}
+    
+
+    <div class="item">
       <div class="img-main">
-        <img src="img/temaki_salmao.jpg" alt="Temaki Salmão CreamChease">
+        <img src="../static/img/{{produto['img']}}" alt="Temaki Salmão CreamChease">
       </div>
-      <h3 class="title-produto">Temaki Salmão</h4>
-        <h5 class="desc-produto">Nori, shari, salmão cru batido, cream cheese e cebolinha. (Acompanha 01 sachê de
-          shoyu.)</h5>
+      <h3 class="title-produto">{{produto['nome']}}</h4>
+        <h5 class="desc-produto">{{produto['detalhe']}}</h5>
         <div class="bottom-produto">
           <b>
             <p class="moeda">R$</p>
           </b>
           <b>
-            <p class="preco">18</p>
+            <p class="preco">{{produto['preco']}}</p>
           </b>
-          <a href="" class="button-add fa-lg"><i class="fas fa-plus-circle"></i></a>
+          <a id="{{produto['id']}}" class="button-add fa-lg"><i class="fas fa-plus-circle" ></i></a>
         </div>
     </div>
-    
+    {% endif %}
+    {% endfor %}
+    {% endfor %}
+
   </section>
 </div>
 

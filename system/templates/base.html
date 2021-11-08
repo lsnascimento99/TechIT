@@ -8,15 +8,24 @@
     <script src="https://kit.fontawesome.com/763d136b89.js" crossorigin="anonymous"></script>
     <link rel="icon" type="image/png" href="{{ url_for('static', filename = 'favicon.png') }}" />
     <link rel="stylesheet" href="{{ url_for('static', filename = 'base.css') }}" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="/static/jquery-cookie/src/jquery.cookie.js"></script>
     <script type="text/javascript">
         {% block js %} {% endblock %}
     </script>
 </head>
 
 <body>
+    <header class="cabecalho">
+      <a href="{{ url_for('raiz') }}"><img src="../static/favicon.png" alt=""></a>
+      
+      <p class="pEndereco" >Avenida Rudge, 315 Barra Funda - São Paulo / SP</p>
+      <button class="btnLogin" >Entrar</button>
+       <a href="{{ url_for('cart') }}" class="cart"><i class="fas fa-shopping-cart"></i></a>
+    </header>
     <nav>
         <ul>
-            <a href="">
+            <a href="{{ url_for('raiz') }}">
                 <li><i class="fas fa-utensils"></i> Cardápio</li>
             </a>
             <a href="" onclick="userAction()">

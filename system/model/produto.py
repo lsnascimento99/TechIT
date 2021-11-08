@@ -30,12 +30,17 @@ class ProdutoModel():
         connectorDatabase = database()
         connect = connectorDatabase.abrirConexao()
         cur = connect.cursor()
-        cur.execute("SELECT id FROM produto WHERE id=%s",(id,))
+        cur.execute("SELECT * FROM produto WHERE id=%s",(id,))
         registro = cur.fetchone()
         if (registro): 
-            categoria = self
-            categoria.nome = registro[0]
-            return categoria
+            produto = self
+            produto.id = registro[0]
+            produto.nome = registro[2]
+            produto.detalhe = registro[3]
+            produto.preco = registro[4]
+            produto.img = registro[5]
+
+            return produto
         categoria = False
 
     @classmethod

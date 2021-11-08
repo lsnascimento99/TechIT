@@ -40,7 +40,7 @@ class CategoriaList(Resource):
         items = []
         for row in registros:
             items.append({'id': row[0], 'categoria': row[1]})
-        return {'Categorias': items}
+        return items
 
 
 class CategoriaMaintenance(Resource):

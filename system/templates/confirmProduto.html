@@ -1,0 +1,29 @@
+<div class="close" onclick="closePop()">+</div>
+<div class="titleConfirm">
+    <h4>Confirmação</h1>
+    <h5 >Escolha a quantidade desse item</h5>
+</div>
+
+<div class="confirmProduto">
+    <div class="confirmPhoto">
+        <img  src="../static/img/{{produto['img']}}" alt="Temaki Salmão CreamChease">
+    </div>
+    <div class="confirmQTD">
+        <h3 id="{{produto.id}}" class="idProduto">{{produto.nome}}</h3>
+        <div class="qtdDinamic">
+            <a class="btnRemove"><i class="fas fa-minus-circle"></i></a>
+            <p class="qtdProduto">1</p>
+            <a class="btnAdd"><i class="fas fa-plus-circle"></i></a>
+        </div>
+        <p id="{{produto['preco']}}" class="idPreco"> <b>R$ {{produto['preco']}}</b></p>
+    </div>
+</div>
+
+<form class="formulario" method="post"> 
+    <div class="field">
+        <label for="mensagem">Observação:</label>
+        <textarea name="mensagem" id="mensagem" placeholder="Mensagem*" required></textarea>
+    </div> 
+</form>
+<button class="buttonAdd" onclick="addCart()">Confirmar pedido</button>
+<!-- <button>teste</button> -->

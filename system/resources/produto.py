@@ -44,14 +44,13 @@ class Produto(Resource):
         
         return {"message": "Produto criado com sucesso!"}, 201
     
-    def get(self):
+    def get(self,id):
         #Função post para registro de usuário
-        data = Produto.parser.parse_args()
         #Função para verificar se o usuário já existe no banco de dados
-        categoria = ProdutoModel.get_produto(data['id'])
+        categoria = ProdutoModel.get_produto(id)
         if categoria:
             #caso não existir retorno a mensagem abaixo
-            return categoria.json()
+            return categoria
         #chamando a classe para gravar o usuário no banco de dados
         return {"message": "Categoria não encontrada"}, 404
 
@@ -61,7 +60,7 @@ class ProdutoList(Resource):
         produtos = []
         for row in registros:
             produtos.append({'id': row[0], 'idCategoria': row[1], 'nome': row[2], 'detalhe': row[3], 'preco': str(row[4]), 'img': row[5] })
-        return {'produtos': produtos}
+        return produtos
 
 class ProdutoMaintenance(Resource):
     #Atualização do produto

@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block titulo %}Temakitech{% endblock %}
+{% block js %}
+
+{% endblock %}
+
+{% block conteudo %}
+<section class="cartContainer">
+  <div class="titleCart">
+    <a class="cartConfirm"><i class="fas fa-shopping-cart"></i></a>
+    <p>Carrinho (0)</p>
+  </div>
+
+  
+  <div class="cartBlock">
+    {% for produto in carrinho %}
+    <div class="descCart">
+      <p class="cartProdutoMain">{{produto['nome']}}</p>
+      <div class="qtdDinamic">
+        <a id="{{produto['id']}}" class="btnRemove"><i class="fas fa-minus-circle"></i></a>
+        <p class="qtdProduto">{{produto['qtd']}}</p>
+        <a id="{{produto['id']}}" class="btnAdd"><i class="fas fa-plus-circle"></i></a>
+      </div>
+      <p class="minDescProduto">{{produto['nome']}}</p>
+      <p class="minDescPreco" id="preco">{{produto['preco']}}</p>
+      <p></p>
+      <!-- Valor total do item -->
+      <p class="minDescPreco"><b>R$ 10</b></p>
+    </div>
+    <hr class="line">
+    {% endfor %}
+    <div class="descCart">
+    
+
+      <p class="minDescProduto">Taxa de entrega</p>
+      <p class="minDescPreco">R$ 10</p>
+      <p class="minDescProduto">Total</p>
+      <p class="minDescPreco"> <b>R$ 10</b> </p>
+    </div>
+    <form class="formulario" method="">
+      <button class="buttonAdd" onclick="">Confirmar pedido</button>
+    </form>
+  </div>
+
+
+  </div>
+
+</section>
+
+{% endblock %}

@@ -30,6 +30,7 @@ CREATE TABLE Produto(
     nome varchar(60),
     detalhe varchar(200),
     preco decimal(15,2),
+    img varchar(60),
     FOREIGN KEY(id_categoria) REFERENCES Categoria(id)
 );
 
