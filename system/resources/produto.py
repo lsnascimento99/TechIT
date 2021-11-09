@@ -4,31 +4,31 @@ from flask_jwt import jwt_required
 
 class Produto(Resource):
     parser = reqparse.RequestParser()
-    # parser.add_argument('idCategoria',
-    #                     type=str,
-    #                     required=False,
-    #                     help="O Campo nome não pode estar em branco."
-    #                     )
-    # parser.add_argument('nome',
-    #                     type=str,
-    #                     required=True,
-    #                     help="O Campo nome não pode estar em branco."
-    #                     )
-    # parser.add_argument('detalhe',
-    #                     type=str,
-    #                     required=False,
-    #                     help="O Campo nome não pode estar em branco."
-    #                     )
-    # parser.add_argument('preco',
-    #                     type=str,
-    #                     required=False,
-    #                     help="O Campo nome não pode estar em branco."
-    #                     )
-    # parser.add_argument('img',
-    #                     type=str,
-    #                     required=False,
-    #                     help="O Campo img não pode estar em branco."
-    #                     )
+    parser.add_argument('idCategoria',
+                        type=str,
+                        required=False
+                        
+                        )
+    parser.add_argument('nome',
+                        type=str,
+                        required=False,
+                        help="O Campo nome não pode estar em branco."
+                        )
+    parser.add_argument('detalhe',
+                        type=str,
+                        required=False,
+                        help="O Campo nome não pode estar em branco."
+                        )
+    parser.add_argument('preco',
+                        type=str,
+                        required=False,
+                        help="O Campo nome não pode estar em branco."
+                        )
+    parser.add_argument('img',
+                        type=str,
+                        required=False,
+                        help="O Campo img não pode estar em branco."
+                        )
 
     # @jwt_required()
     def post(self):

@@ -91,5 +91,16 @@ def minusProduto():
             
             return {'message': 'Este produto já foi adicionado ao carrinho'}, 400
 
+@app.route("/contato")
+def contato():
+    return render_template("contato.html")
+
+    
+@app.route("/perfil")
+def perfil():
+    return render_template("perfil.html")
+
 if __name__ == '__main__':
     app.run(port=5000, debug=True)
+
+    
