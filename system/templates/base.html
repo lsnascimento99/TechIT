@@ -21,6 +21,9 @@
       
       <p class="pEndereco" >Avenida Rudge, 315 Barra Funda - São Paulo / SP</p>
       <button class="btnLogin" >Entrar</button>
+      {% if carrinho %}
+       <a href="{{ url_for('cart') }}" class="alertIcon" > <i class="fas fa-circle"></i></a>
+       {% endif %}
        <a href="{{ url_for('cart') }}" class="cart"><i class="fas fa-shopping-cart"></i></a>
     </header>
     <nav>

@@ -15,28 +15,79 @@ $(document).ready(function(){
           }
       });
   });
+
+  $('.btnAdd').click(function(){
+    var quantidade = $('.qtdProduto').text();
+    quantidade = int(quantidade);
+    quantidade = quantidade + 1;
+    $('.qtdProduto').text(quantidade);
+    var preco = $( ".idProduto" )[0].id;
+    preco = float(preco);
+    preco = preco + preco;
+    $('.idPreco').text(preco);
+
+
+
+  });
+
 });
 
 function closePop(){
    document.querySelector('.bg-modal').style.display = "none";
 }
 
+function aumentarQtd(){
+  var quantidade = $('.qtdProduto').text();
+    quantidade = parseInt(quantidade)
+    quantidade = quantidade + 1;
+    $('.qtdProduto').text(quantidade); 
+    var preco = $( ".idPreco" )[0].id
+    preco = parseFloat(preco);
+    var precoTotal = $( ".idPreco" ).text()
+    precoTotal = parseFloat(precoTotal);
+    precoTotal = preco + precoTotal;
+    $('.idPreco').text(precoTotal.toFixed(2));
+    $('.idPreco').css('font-weight', 'bold')
+
+}
+
+function diminuirQtd(){
+  var quantidade = $('.qtdProduto').text();
+    quantidade = parseInt(quantidade)
+    if (quantidade > 1){
+      quantidade = quantidade - 1;
+      $('.qtdProduto').text(quantidade); 
+      var preco = $( ".idPreco" )[0].id
+      preco = parseFloat(preco);
+      var precoTotal = $( ".idPreco" ).text()
+      precoTotal = parseFloat(precoTotal);
+      precoTotal = precoTotal - preco ;
+      $('.idPreco').text(precoTotal.toFixed(2));
+      $('.idPreco').css('font-weight', 'bold')
+    }else{
+      alert("Quantidade não pode ser menor que 1")
+    }
+    
+}
+
 function addCart(){
   $.ajax({
     url: '/addCart',
     type: 'post',
-    data: {id: $( ".idProduto" )[0].id, nome: $( ".idProduto" ).text() ,qtd: $( ".qtdProduto" ).text(), preco: $( ".idPreco" ).text(), obs: $( "#mensagem" ).val()},
+    data: {id: $( ".idProduto" )[0].id, nome: $( ".idProduto" ).text() ,qtd: $( ".qtdProduto" ).text(), preco: $( ".idPreco" )[0].id, precoTotal: $( ".idPreco" ).text(), obs: $( "#mensagem" ).val()},
     success: function(data){ 
+      alert("Produto adicionado ao carrinho com sucesso")
+      window.location.reload();
     },
     error: function(data){ 
       var response = data.responseJSON
       alert(response.message)
+      
     }
 });
   var myAry = [1, 2, 3];
   $.cookie('name', JSON.stringify(myAry));
 }
-
 
 {% endblock %}
 

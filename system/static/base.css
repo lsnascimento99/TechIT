@@ -453,7 +453,13 @@ footer {
 .btnRemove{
   color: red;
   font-size: 20px;
+  cursor: pointer;
 }
+
+.confirmQTD p{
+  display: inline-block;
+}
+
 .btnAdd{
   
   color: green;
@@ -534,7 +540,18 @@ input[type=submit]{
   margin: 0 auto;
   text-align: center;
   border-radius: 15px;
+}
 
+.alertIcon{
+  position: absolute;
+  margin-left: 20.2%;
+  margin-top: 7%;
+  color: red;
+
+}
+
+.totalsCart p{
+  display: inline-block;
 }
 
 

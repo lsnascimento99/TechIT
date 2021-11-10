@@ -11,11 +11,11 @@
     <div class="confirmQTD">
         <h3 id="{{produto.id}}" class="idProduto">{{produto.nome}}</h3>
         <div class="qtdDinamic">
-            <a class="btnRemove"><i class="fas fa-minus-circle"></i></a>
+            <a class="btnRemove" onclick="diminuirQtd()"><i class="fas fa-minus-circle"></i></a>
             <p class="qtdProduto">1</p>
-            <a class="btnAdd"><i class="fas fa-plus-circle"></i></a>
+            <a class="btnAdd" onclick="aumentarQtd()"><i class="fas fa-plus-circle"></i></a>
         </div>
-        <p id="{{produto['preco']}}" class="idPreco"> <b>R$ {{produto['preco']}}</b></p>
+         <p><b>R$</b></p>  <p id="{{produto['preco']}}" class="idPreco"> <b>{{produto['preco']}}</b></p>
     </div>
 </div>
 
