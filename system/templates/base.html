@@ -7,11 +7,18 @@
     <title>{% block titulo %}{% endblock %}</title>
     <script src="https://kit.fontawesome.com/763d136b89.js" crossorigin="anonymous"></script>
     <link rel="icon" type="image/png" href="{{ url_for('static', filename = 'favicon.png') }}" />
+    <link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
+    <!--===============================================================================================-->
+
+    <!--===============================================================================================-->	
+
     <link rel="stylesheet" href="{{ url_for('static', filename = 'base.css') }}" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="/static/jquery-cookie/src/jquery.cookie.js"></script>
     <script type="text/javascript">
-        {% block js %} {% endblock %}
+        {% block js %}
+
+        {% endblock %}
     </script>
 </head>
 
@@ -20,7 +27,7 @@
       <a href="{{ url_for('raiz') }}"><img src="../static/favicon.png" alt=""></a>
       
       <p class="pEndereco" >Avenida Rudge, 315 Barra Funda - São Paulo / SP</p>
-      <button class="btnLogin" >Entrar</button>
+      <button class="btnLogin" onclick="login()" >Entrar</button>
       {% if carrinho %}
        <a href="{{ url_for('cart') }}" class="alertIcon" > <i class="fas fa-circle"></i></a>
        {% endif %}
@@ -39,6 +46,12 @@
             </a>
         </ul>
     </nav>
+
+    <div class="bg-modal-login">
+      <div class="modal-content-login"> 
+        <div class="close" onclick="closePop()">+</div>
+      </div>
+    </div>
     {% block barStatus %}
     <section class="status">
         <div class="status-horas">

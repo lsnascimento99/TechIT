@@ -42,6 +42,52 @@ padding-top: 0px;
 
 }
 
+
+.navLogin {
+  overflow: hidden;
+  background-color: #333;
+}
+
+.navLogin a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.navLogin a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.navLogin a.active {
+  background-color: #04AA6D;
+  color: white;
+}
+
+#nome_login{
+  margin-top: 10px;
+}
+
+#email_login{
+  margin-top: 20px;
+}
+
+#manterlogado{
+  margin-top: 20px;
+}
+
+#logar{
+  margin-top: 15px;
+}
+
+.link{
+  margin: 15px;
+}
+
+
 .cabecalho{
   background-color: #333;
   display: inline-block;
@@ -399,6 +445,40 @@ footer {
   position: relative;
 }
 
+
+.bg-modal-login{
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  position: absolute;
+  top: 0  ;
+  justify-content: center;
+  display: none;
+}
+
+
+.modal-content-login{
+  width: 420px;
+  height: auto;
+  background-color: white;
+  opacity: 1;
+  border-radius: 4px;
+  position: relative;
+  align-items: center;
+  margin-left: 34%;
+  margin-top: 2.5%;
+}
+
+
+.formLogin{
+
+  padding-top: 20px;
+  padding-right: 20px;
+  padding-left: 20px;
+  padding-bottom: 10px;
+
+}
+
 .close{
   position: absolute;
   top: 0;
@@ -496,12 +576,14 @@ footer {
 }
 input[type=text],
 input[type=email],
+input[type=password],
+input[type=number],
 textarea{
   width: 100%;
   padding-left: 10px;
   height: 30px;
   line-height: 30px;
-  border-radius: 15px;
+  border-radius: 5px;
   border: 1px solid #ccc;
   outline: none;
 }
@@ -528,6 +610,24 @@ input[type=submit]{
   border-radius: 15px;
 }
 
+.telefoneBox{
+  display: inline-flex;
+
+}
+
+.telefone{
+  display: inline-block;
+}
+
+.telefoneDDD{
+  display: contents;
+}
+
+#email_login.ddd{
+  width: 20%;
+  margin-right: 20px;
+}
+
 .buttonAdd{
   display: block;
   background-color: #F6750A;
@@ -544,8 +644,8 @@ input[type=submit]{
 
 .alertIcon{
   position: absolute;
-  margin-left: 20.2%;
-  margin-top: 7%;
+  margin-left: 255px;
+  margin-top: 88px;
   color: red;
 
 }

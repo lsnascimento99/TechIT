@@ -70,6 +70,31 @@ function diminuirQtd(){
     
 }
 
+function login(){
+  $.ajax({
+    url: '/login',
+    type: 'post',
+    data: {login:"login"},
+    success: function(data){ 
+      $('.modal-content-login').html(data); 
+      $('.modal-content-login').append(data.htmlresponse);
+      $('.bg-modal-login').css('display','block');
+    }
+});
+}
+
+function cadastrar(){
+  $.ajax({
+    url: '/login',
+    type: 'post',
+    data: {login:"cadastro"},
+    success: function(data){ 
+      $('.modal-content-login').html(data); 
+      $('.modal-content-login').append(data.htmlresponse);
+    }
+});
+}
+
 function addCart(){
   $.ajax({
     url: '/addCart',
@@ -96,10 +121,9 @@ function addCart(){
 <div class="bg-modal">
   <div class="modal-content"> 
     <div class="close" onclick="closePop()">+</div>
-
   </div>
-
 </div>
+
 <div class="container">
   <section class="items">
     {% for categoria in categorias %}

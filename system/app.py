@@ -61,6 +61,14 @@ def raiz():
 
     return render_template("index.html", produtos=listaProdutos, categorias=listaCategorias, carrinho = ValorTotal)
 
+@app.route("/login", methods=["POST", "GET"])
+def login():
+    
+    control = request.form['login']
+    if control == 'cadastro':
+        control = ''
+      
+    return jsonify({'htmlresponse': render_template('login.html',controlLogin = control)})
 
 @app.route("/confirmProduto", methods=["POST", "GET"])
 def confirmProduto():
