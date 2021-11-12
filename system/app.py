@@ -61,6 +61,33 @@ def raiz():
 
     return render_template("index.html", produtos=listaProdutos, categorias=listaCategorias, carrinho = ValorTotal)
 
+@app.route("/logar", methods=["POST", "GET"])
+def logar():
+    # Extrai os dados do formulário.
+    f = request.form
+    if "login" not in f or "senha" not in f:
+        return ":(", 422
+    login = f["login"]
+    senha = f["senha"]
+
+    logado = authenticate(login,senha)
+
+    if logado :
+        res = make_response(redirect("/"))
+        res.set_cookie("nomeUser", logado.nome, samesite = "Strict")
+        res.set_cookie("login", login, samesite = "Strict")
+        res.set_cookie("senha", senha, samesite = "Strict")
+        return res
+
+@app.route("/logout", methods=["POST", "GET"])
+def logout():
+    res = make_response(redirect("/"))
+    res.set_cookie("nomeUser", "", samesite = "Strict")
+    res.set_cookie("login", "", samesite = "Strict")
+    res.set_cookie("senha", "", samesite = "Strict")
+    return res
+
+# FRONT - Tela login 
 @app.route("/login", methods=["POST", "GET"])
 def login():
     

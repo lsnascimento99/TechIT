@@ -92,13 +92,16 @@ padding-top: 0px;
   background-color: #333;
   display: inline-block;
   width: 100%;
+}
 
+.cabecalhoItems{
+  width: 66.5%;
+  margin-left: 20%;
 }
 
 .cabecalho img{
   width: 120px;
   height: 120px;
-  margin-left: 20%;
 }
 
 .cart{
@@ -120,7 +123,8 @@ padding-top: 0px;
   top: 25px;
   display: inline-block;
   position: absolute;
-  margin-left: 225px;
+  right: 0;
+  margin-right: 240px;
   padding: 8px 20px 8px 20px;
   background-color: #F6750A;
   border-radius: 15px;
@@ -236,6 +240,7 @@ padding-top: 0px;
   padding: 10px 10px 20px 10px;
   color: white;
   display: inline-block;
+  position: inherit;
 }
 
 .cartBlock{
@@ -262,7 +267,7 @@ padding-top: 0px;
 .minDescPreco{
   font-size: 14px;
   margin-right: 0px;
-  position: relative;
+  position: inherit;
 }
 
 .line{
@@ -456,6 +461,55 @@ footer {
   display: none;
 }
 
+#listMenuLogin{
+  display: inline-block;
+  position: absolute;
+  list-style-type: none;
+  right: 0;
+  margin-right: 240px;
+}
+
+#visible:hover .list-categories{
+  max-height: inherit;
+  display:  block;
+}
+
+.list-categories li:hover a {
+  font-weight: bold;
+  width: 100%;
+  margin-left: -10px;
+  padding-left: 10px;
+  cursor: pointer;
+}
+
+
+.list-categories{
+  list-style-type: none;
+  width: 200px;
+  padding: 0px;
+  margin: 0px;
+  margin-left: -48px;
+  top: 55px;
+  display: none;
+  max-height: 0px;
+  position: absolute;
+  background-color: white;
+  padding: 10px;
+  border: solid;
+  border-radius: 15px;
+  border-width: thin;
+
+}
+
+.list-categories li{
+  padding: 10px;
+  text-align: left;
+}
+
+.list-categories li{
+  width: 100%;
+}
+
 
 .modal-content-login{
   width: 420px;
@@ -547,11 +601,16 @@ footer {
   cursor: pointer;
 }
 
+
+.navLogin a{
+  cursor: pointer;
+}
+
 .formulario{
   width: 100%;
   padding: 10px;
   display: block;
-  position: relative;
+  position: inherit;
  align-items: center;
  justify-content: center;
 }
@@ -640,6 +699,7 @@ input[type=submit]{
   margin: 0 auto;
   text-align: center;
   border-radius: 15px;
+  position: inherit;
 }
 
 .alertIcon{

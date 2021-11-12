@@ -1,21 +1,27 @@
-<div class="close" onclick="closePop()">+</div>
+<div class="close" onclick="closePopLogin()">+</div>
 
 <div class="navLogin">
     
-        <a onclick="login()">Login</a> </li>
+        <a  onclick="login()">Login</a> </li>
         <a  onclick="cadastrar()">Cadastrar</a></li>
     
 </div>
 {% if controlLogin %}    
 
-<form class="formLogin" method="post" action=""> 
+<iframe name="dummyframe" id="dummyframe" style="display: none;">
+  <p>teste</p>
+</iframe>
+
+<iframe name="dummyframe" id="dummyframe" style="display: none;"></iframe>
+
+<form class="formLogin" method="post" action="javascript:SubForm()"> 
     <h1>Login</h1> 
     <p> 
-      <input id="nome_login" name="nome_login" required="required" type="text" placeholder="Email"/>
+      <input id="nome_login" name="login" required="required" type="text" placeholder="Email"/>
     </p>
      
     <p> 
-      <input id="email_login" name="email_login" required="required" type="password" placeholder="Senha" /> 
+      <input id="email_login" name="senha" required="required" type="password" placeholder="Senha" /> 
     </p>
      
     <p> 
@@ -26,17 +32,13 @@
     <p> 
       <input id="logar" type="submit" value="Logar" /> 
     </p>
-     
-    <p class="link">
-      Ainda não tem conta?
-      <a href="#paracadastro">Cadastre-se</a>
-    </p>
+
   </form>
 
   {% else %}
 
 
-  <form class="formLogin" method="post" action=""> 
+  <form class="formLogin" method="post" action="./login"> 
     <h1>Cadastro</h1> 
     <p> 
       <input id="nome_login" name="nome_login" required="required" type="text" placeholder="Nome"/>
@@ -69,7 +71,7 @@
     </p>
      
     <p> 
-      <input id="logar" type="submit" value="Logar" /> 
+      <input id="logar" type="submit" value="Logar" action="SubForm()"  /> 
     </p>
      
   </form>

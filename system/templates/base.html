@@ -2,96 +2,186 @@
 <html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block titulo %}{% endblock %}</title>
-    <script src="https://kit.fontawesome.com/763d136b89.js" crossorigin="anonymous"></script>
-    <link rel="icon" type="image/png" href="{{ url_for('static', filename = 'favicon.png') }}" />
-    <link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
-    <!--===============================================================================================-->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block titulo %}{% endblock %}</title>
+  <script src="https://kit.fontawesome.com/763d136b89.js" crossorigin="anonymous"></script>
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename = 'favicon.png') }}" />
+  <link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
+  <!--===============================================================================================-->
 
-    <!--===============================================================================================-->	
+  <!--===============================================================================================-->
 
-    <link rel="stylesheet" href="{{ url_for('static', filename = 'base.css') }}" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="/static/jquery-cookie/src/jquery.cookie.js"></script>
-    <script type="text/javascript">
-        {% block js %}
+  <link rel="stylesheet" href="{{ url_for('static', filename = 'base.css') }}" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="/static/jquery-cookie/src/jquery.cookie.js"></script>
+  <script type="text/javascript">
+    {% block js %}
 
-        {% endblock %}
-    </script>
+    {% endblock %}
+  </script>
+  <script type="text/javascript">
+    function closePopLogin() {
+      document.querySelector('.bg-modal-login').style.display = "none";
+    }
+
+    function login() {
+      $.ajax({
+        url: '/login',
+        type: 'post',
+        data: { login: "login" },
+        success: function (data) {
+          $('.modal-content-login').html(data);
+          $('.modal-content-login').append(data.htmlresponse);
+          $('.bg-modal-login').css('display', 'block');
+        }
+      });
+    }
+
+    function logout() {
+      $.ajax({
+        url: '/logout',
+        type: 'post',
+        success: function (data) {
+          window.location.reload();
+        }
+      });
+    }
+
+    function SubForm() {
+      $.ajax({
+        url: '/logar',
+        type: 'post',
+        data: $('.formLogin').serialize(),
+        success: function () {
+          window.location.reload();
+        }
+      });
+    }
+
+    $('.formLogin').submit(function (e) {
+      e.preventDefault();
+      $.ajax({
+        url: '/logar',
+        type: 'post',
+        data: $('.formLogin').serialize(),
+        success: function () {
+          // Whatever you want to do after the form is successfully submitted
+        }
+      });
+    });
+
+    function cadastrar() {
+      $.ajax({
+        url: '/login',
+        type: 'post',
+        data: { login: "cadastro" },
+        success: function (data) {
+          $('.modal-content-login').html(data);
+          $('.modal-content-login').append(data.htmlresponse);
+        }
+      });
+    }
+
+
+
+
+  </script>
 </head>
 
 <body>
-    <header class="cabecalho">
-      <a href="{{ url_for('raiz') }}"><img src="../static/favicon.png" alt=""></a>
-      
-      <p class="pEndereco" >Avenida Rudge, 315 Barra Funda - São Paulo / SP</p>
-      <button class="btnLogin" onclick="login()" >Entrar</button>
-      {% if carrinho %}
-       <a href="{{ url_for('cart') }}" class="alertIcon" > <i class="fas fa-circle"></i></a>
-       {% endif %}
-       <a href="{{ url_for('cart') }}" class="cart"><i class="fas fa-shopping-cart"></i></a>
-    </header>
-    <nav>
-        <ul>
-            <a href="{{ url_for('raiz') }}">
-                <li><i class="fas fa-utensils"></i> Cardápio</li>
-            </a>
-            <a href="" onclick="userAction()">
-                <li><i class="fas fa-star"></i> Avaliações</li>
-            </a>
-            <a href="../temakitechApp/contato.html">
-                <li><i class="fas fa-phone-alt"></i> Contato</li>
-            </a>
-        </ul>
-    </nav>
+  <header class="cabecalho">
+    <div class="cabecalhoItems">    
+    <a href="{{ url_for('raiz') }}"><img src="../static/favicon.png" alt=""></a>
 
-    <div class="bg-modal-login">
-      <div class="modal-content-login"> 
-        <div class="close" onclick="closePop()">+</div>
+    <p class="pEndereco">Avenida Rudge, 315 Barra Funda - São Paulo / SP</p>
+    {% if request.cookies.get("login", "") %}
+    <ul id="listMenuLogin">
+      <li id="visible">
+        <button class="btnLogin" style="cursor:pointer; position:relative; margin:0px" > Olá, {{request.cookies.get("nomeUser", "")}}</button>
+        <ul class="list-categories">
+          <li><a><i class="far fa-user-circle"></i>  Perfil</a></li>
+          <hr class="line">
+          <li><a><i class="far fa-file-alt"></i> Meus Pedidos</a></li>
+          <hr class="line">
+          <li><a><i class="fas fa-map-marker-alt"></i> Endereço</a></li>
+          <hr class="line">
+          <li><a onclick="logout()" > <i class="fas fa-sign-out-alt"></i> Logout</a></li>
+          <hr class="line">
+        </ul>
+      </li>
+    </ul>
+    
+    {% else %}
+    <button class="btnLogin" onclick="login()">Entrar</button>
+    {% endif %}
+
+
+    {% if carrinho %}
+    <a href="{{ url_for('cart') }}" class="alertIcon"> <i class="fas fa-circle"></i></a>
+    {% endif %}
+    <a href="{{ url_for('cart') }}" class="cart"><i class="fas fa-shopping-cart"></i></a>
+  </header>
+</div>
+  <nav>
+    <ul>
+      <a href="{{ url_for('raiz') }}">
+        <li><i class="fas fa-utensils"></i> Cardápio</li>
+      </a>
+      <a href="" onclick="userAction()">
+        <li><i class="fas fa-star"></i> Avaliações</li>
+      </a>
+      <a href="../temakitechApp/contato.html">
+        <li><i class="fas fa-phone-alt"></i> Contato</li>
+      </a>
+    </ul>
+  </nav>
+
+  <div class="bg-modal-login">
+    <div class="modal-content-login">
+      <div class="close" onclick="closePop()">+</div>
+    </div>
+  </div>
+  {% block barStatus %}
+  <section class="status">
+    <div class="status-horas">
+      <div class="icon-status">
+        <i class="fas fa-circle fa-lg"></i>
+      </div>
+
+      <div class="status-desc">
+        <p class="status-p">Fechado</p>
+        <p>Veja os horários</p>
       </div>
     </div>
-    {% block barStatus %}
-    <section class="status">
-        <div class="status-horas">
-          <div class="icon-status">
-            <i class="fas fa-circle fa-lg"></i>
-          </div>
-    
-          <div class="status-desc">
-            <p class="status-p">Fechado</p>
-            <p>Veja os horários</p>
-          </div>
-        </div>
-    
-        <div class="tempo-entrega">
-          <div class="icon-tempo">
-            <i class="far fa-clock fa-2x"></i>
-          </div>
-          <div class="tempo-desc">
-            <p>Tempo de entrega</p>
-            <p>40 - 55 min</p>
-          </div>
-        </div>
-    
-        <div class="forma-pgto">
-          <div class="icon-pgto">
-            <i class="fas fa-credit-card fa-2x"></i>
-          </div>
-    
-          <div class="desc-pgto">
-            <p>Forma de pagamento</p>
-          </div>
-        </div>
-    
-      </section>
-    
-    {% endblock %}
-    {% block conteudo %}{% endblock %}
-    <footer>
-        <h5>© Temakitech - Todos os direitos reservados</h5>
-    </footer>
+
+    <div class="tempo-entrega">
+      <div class="icon-tempo">
+        <i class="far fa-clock fa-2x"></i>
+      </div>
+      <div class="tempo-desc">
+        <p>Tempo de entrega</p>
+        <p>40 - 55 min</p>
+      </div>
+    </div>
+
+    <div class="forma-pgto">
+      <div class="icon-pgto">
+        <i class="fas fa-credit-card fa-2x"></i>
+      </div>
+
+      <div class="desc-pgto">
+        <p>Forma de pagamento</p>
+      </div>
+    </div>
+
+  </section>
+
+  {% endblock %}
+  {% block conteudo %}{% endblock %}
+  <footer>
+    <h5>© Temakitech - Todos os direitos reservados</h5>
+  </footer>
 </body>
 
 </html>

@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block titulo %}Temakitech{% endblock %}
 {% block js %}
+
 $(document).ready(function(){
   $('.button-add').click(function(){
       var userid = this.id;
@@ -32,8 +33,10 @@ $(document).ready(function(){
 
 });
 
+
+
 function closePop(){
-   document.querySelector('.bg-modal').style.display = "none";
+  document.querySelector('.bg-modal').style.display = "none";
 }
 
 function aumentarQtd(){
@@ -70,30 +73,7 @@ function diminuirQtd(){
     
 }
 
-function login(){
-  $.ajax({
-    url: '/login',
-    type: 'post',
-    data: {login:"login"},
-    success: function(data){ 
-      $('.modal-content-login').html(data); 
-      $('.modal-content-login').append(data.htmlresponse);
-      $('.bg-modal-login').css('display','block');
-    }
-});
-}
 
-function cadastrar(){
-  $.ajax({
-    url: '/login',
-    type: 'post',
-    data: {login:"cadastro"},
-    success: function(data){ 
-      $('.modal-content-login').html(data); 
-      $('.modal-content-login').append(data.htmlresponse);
-    }
-});
-}
 
 function addCart(){
   $.ajax({

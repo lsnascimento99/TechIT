@@ -51,6 +51,7 @@ CREATE TABLE `status_pedido` (
 CREATE TABLE `usuario` (
   `Id` int NOT NULL AUTO_INCREMENT,
   `usuario` varchar(30) NOT NULL,
+  `email` varchar(200) NOT NULL,
   `senha` varchar(80) NOT NULL,
   `nome` varchar(50) DEFAULT NULL,
   `sobrenome` varchar(100) DEFAULT NULL,

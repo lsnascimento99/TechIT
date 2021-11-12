@@ -31,18 +31,18 @@ class UserModel():
 
     #Ao criar verificar se o usuário já existe
     @classmethod
-    def find_by_username(self, username):
+    def find_by_username(self, email):
         connectorDatabase = database()
         connect = connectorDatabase.abrirConexao()
         cur = connect.cursor()
-        cur.execute("SELECT id, usuario, senha, nome, sobrenome, data_nascimento FROM usuario WHERE usuario=%s",(username,))
+        cur.execute("SELECT id, email, senha, nome, sobrenome, data_nascimento FROM usuario WHERE email=%s",(email,))
         username = cur.fetchone()
         if (username): 
             user = self
             user.id = username[0]
             user.username = username[1]
             user.password = username[2]
-            user.sobrenome = username[3]
+            user.nome = username[3]
             user.dtNascimento = username[4]
             return user
         username = False
