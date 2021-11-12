@@ -487,8 +487,7 @@ footer {
   list-style-type: none;
   width: 200px;
   padding: 0px;
-  margin: 0px;
-  margin-left: -48px;
+  right:0;
   top: 55px;
   display: none;
   max-height: 0px;
